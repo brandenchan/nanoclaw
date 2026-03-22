@@ -70,6 +70,18 @@ systemctl --user restart nanoclaw
 
 **WhatsApp not connecting after upgrade:** WhatsApp is now a separate skill, not bundled in core. Run `/add-whatsapp` (or `npx tsx scripts/apply-skill.ts .claude/skills/add-whatsapp && npm run build`) to install it. Existing auth credentials and groups are preserved.
 
+## Shared Context (Multi-Machine Setup)
+
+This repo runs on multiple machines. The `groups/global/CLAUDE.md` file is the single source of truth for agent behavior — Notion formatting rules, response style, etc. Both the NanoClaw container agent and direct Claude Code sessions must follow it.
+
+**Before any Notion or agent-behavior work:**
+1. `git pull origin main` — get the latest shared context
+2. Read `groups/global/CLAUDE.md` — follow its rules for Notion structure, formatting, and response style
+
+**After modifying any `groups/*/CLAUDE.md` file:**
+1. Commit and push immediately so other machines stay in sync
+2. On any machine running NanoClaw as a service, pull and restart so the agent picks up changes
+
 ## Container Build Cache
 
 The container buildkit caches the build context aggressively. `--no-cache` alone does NOT invalidate COPY steps — the builder's volume retains stale files. To force a truly clean rebuild, prune the builder then re-run `./container/build.sh`.
