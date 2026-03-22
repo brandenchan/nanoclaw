@@ -94,7 +94,7 @@ When creating or managing todos in Notion, use this structure:
 
 *Database properties:*
 • *Task* (title) — short, actionable description
-• *Type* (select) — 🛒 Groceries, 🛍️ Shopping, 🏃 Errand
+• *Type* (select) — 📋 Task, 🛒 Groceries, 🛍️ Shopping, 🏃 Errand, 📖 Recipe
 • *Tags* (multi-select) — filterable labels, e.g. Groceries, Hardware, Home, Work, Health, Finance, Tech, Personal
 • *Urgency* (select) — 🔴 High, 🟡 Medium, 🟢 Low
 • *Status* (status) — Not started, In progress, Done
@@ -106,10 +106,12 @@ When creating or managing todos in Notion, use this structure:
 *Page content:*
 Write findings, research, details, and longer context into the page body itself — not the Notes property. The page content is where the real substance goes. Keep it well-structured with headings and bullets. Always embed URLs as clickable bookmark or link blocks — never paste raw URLs as plain text.
 
-*Type guidelines:*
+*Type guidelines (mandatory — every item must have a type):*
+• 📋 Task — actionable work items (projects, chores, digital tasks, admin)
 • 🛒 Groceries — day-to-day consumables from supermarkets or pharmacies (food, cleaning supplies, toiletries, medicine)
 • 🛍️ Shopping — other purchases (electronics, furniture, hardware, clothes, etc.)
 • 🏃 Errand — things that require going somewhere or multi-step real-world actions. Tag with location context if relevant
+• 📖 Recipe — cooking recipes
 
 *Tag rules:*
 • Auto-tag based on context (e.g. "buy milk" → 🛒 Groceries, "buy headphones" → 🛍️ Shopping + Tech)
