@@ -80,7 +80,7 @@ This repo runs on multiple machines. The `groups/global/CLAUDE.md` file is the s
 
 **After modifying any `groups/*/CLAUDE.md` file:**
 1. Commit and push immediately so other machines stay in sync
-2. On any machine running NanoClaw as a service, pull and restart so the agent picks up changes
+2. On any machine running NanoClaw as a service, pull the changes — no restart needed (CLAUDE.md files are read fresh on each new request)
 
 ## Container Build Cache
 
