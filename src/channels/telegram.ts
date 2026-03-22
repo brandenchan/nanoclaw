@@ -100,11 +100,12 @@ export class TelegramChannel implements Channel {
         'Unknown';
       const sender = ctx.from?.id.toString() || '';
       const msgId = ctx.message.message_id.toString();
+      const isFromBot = ctx.from?.id === ctx.me?.id;
 
       // Determine chat name
       const chatName =
         ctx.chat.type === 'private'
-          ? senderName
+          ? (isFromBot ? 'Private' : senderName)
           : (ctx.chat as any).title || chatJid;
 
       // Translate Telegram @bot_username mentions into TRIGGER_PATTERN format.
@@ -152,11 +153,11 @@ export class TelegramChannel implements Channel {
       this.opts.onMessage(chatJid, {
         id: msgId,
         chat_jid: chatJid,
-        sender,
-        sender_name: senderName,
+        sender: isFromBot ? 'owner' : sender,
+        sender_name: isFromBot ? 'User' : senderName,
         content,
         timestamp,
-        is_from_me: false,
+        is_from_me: isFromBot,
       });
 
       logger.info(
